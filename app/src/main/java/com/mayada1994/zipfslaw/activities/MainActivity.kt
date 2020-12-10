@@ -1,4 +1,4 @@
-package com.mayada1994.zipfslaw
+package com.mayada1994.zipfslaw.activities
 
 import android.Manifest
 import android.content.Intent
@@ -13,6 +13,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.mayada1994.zipfslaw.R
+import com.mayada1994.zipfslaw.entities.TextFile
+import com.mayada1994.zipfslaw.fragments.TableFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -110,13 +113,9 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == SELECT_FILE_REQUEST && resultCode == RESULT_OK) {
             data?.data?.let {
-                importFile(it)
+                readText(it, getFileName(it))
             }
         }
-    }
-
-    private fun importFile(uri: Uri) {
-        readText(uri, getFileName(uri))
     }
 
     private fun readText(uri: Uri, filename: String?) {
@@ -134,7 +133,10 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Обраний файл не є текстовим", Toast.LENGTH_SHORT).show()
         }
 
-        //TODO: analyze text
+        supportFragmentManager.beginTransaction()
+            .addToBackStack(null)
+            .add(R.id.container, TableFragment.newInstance(TextFile(filename, text.toString())))
+            .commit()
     }
 
     private fun getFileName(uri: Uri): String? {
@@ -145,8 +147,7 @@ class MainActivity : AppCompatActivity() {
                 return null
             }
             cursor.moveToFirst()
-            val fileName: String =
-                cursor.getString(cursor.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME))
+            val fileName: String = cursor.getString(cursor.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME))
             cursor.close()
             return fileName
         }
