@@ -50,6 +50,11 @@ class TableFragment : Fragment() {
 
     private fun buildTable(zipfWords: List<ZipfWord>) {
         rvWords.adapter = WordAdapter(zipfWords)
+
+        btnChart.setOnClickListener {
+            fragmentManager?.beginTransaction()?.addToBackStack(null)
+                ?.add(R.id.container, ChartFragment.newInstance(zipfWords))?.commit()
+        }
     }
 
     companion object {

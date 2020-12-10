@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.OpenableColumns
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +28,11 @@ class MainActivity : AppCompatActivity() {
         setTheme(R.style.Theme_ZipfsLaw)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = ContextCompat.getColor(this, R.color.monte_carlo)
+        }
 
         btnSelectFile.setOnClickListener { checkPermission() }
     }
@@ -147,7 +153,8 @@ class MainActivity : AppCompatActivity() {
                 return null
             }
             cursor.moveToFirst()
-            val fileName: String = cursor.getString(cursor.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME))
+            val fileName: String =
+                cursor.getString(cursor.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME))
             cursor.close()
             return fileName
         }
