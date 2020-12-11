@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.NGram" parent="Theme.AppCompat.DayNight.NoActionBar"/>
+
+    <style name="Autocomplete">
+        <item name="colorControlActivated">@color/prussian_blue</item>
+    </style>
+
+    <style name="TextAppearance.Hint.Light.Small" parent="@android:style/TextAppearance">
+        <item name="android:textColorHint">@color/light_sea_green_transparent_80</item>
+        <item name="android:textColor">@color/light_sea_green</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="EditTextStyle">
+        <item name="colorControlActivated">@color/prussian_blue</item>
+    </style>
+</resources>

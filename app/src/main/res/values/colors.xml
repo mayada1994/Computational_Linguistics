@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="solitude">#eceff4</color>
+    <color name="monte_carlo">#7fc4bf</color>
+    <color name="light_sea_green">#16aaaa</color>
+    <color name="light_sea_green_transparent_80">#cc16aaaa</color>
+    <color name="prussian_blue">#00425d</color>
+</resources>
