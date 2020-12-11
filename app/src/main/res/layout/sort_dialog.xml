@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@color/solitude"
+    android:gravity="center"
+    android:paddingHorizontal="6dp"
+    android:paddingVertical="14dp">
+
+    <androidx.appcompat.widget.AppCompatRadioButton
+        android:id="@+id/btnRegular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Прямий словник"
+        android:textColor="@color/light_sea_green"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatRadioButton
+        android:id="@+id/btnReverse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Зворотній словник"
+        android:textColor="@color/light_sea_green"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatRadioButton
+        android:id="@+id/btnFrequency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="За частотою"
+        android:textColor="@color/light_sea_green"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+</RadioGroup>
